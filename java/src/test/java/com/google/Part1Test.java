@@ -30,11 +30,11 @@ public class Part1Test extends TestBase {
     assertEquals(6, lines.length, outputStream.toString());
     assertThat(lines[0], containsString("Here's a list of all available videos:"));
     assertThat(lines[1],
-        containsString("Amazing Cats (amazing_cats_video_id) [#cat #animal]"));
+            containsString("Another Cat Video (another_cat_video_id) [#cat #animal]"));
     assertThat(lines[2],
-        containsString("Another Cat Video (another_cat_video_id) [#cat #animal]"));
+            containsString("Funny Dogs (funny_dogs_video_id) [#dog #animal]"));
     assertThat(lines[3],
-        containsString("Funny Dogs (funny_dogs_video_id) [#dog #animal]"));
+        containsString("Amazing Cats (amazing_cats_video_id) [#cat #animal]"));
     assertThat(lines[4],
         containsString("Life at Google (life_at_google_video_id) [#google #career]"));
     assertThat(lines[5],
@@ -44,8 +44,13 @@ public class Part1Test extends TestBase {
   @Test
   public void testPlayVideo() {
     videoPlayer.playVideo("amazing_cats_video_id");
-    assertEquals(1, getOutputLines().length);
+    videoPlayer.playVideo("some_other_video_id");
+    videoPlayer.playVideo("another_cat_video_id");
+    assertEquals(4, getOutputLines().length);
     assertThat(outputStream.toString(), containsString("Playing video: Amazing Cats"));
+    assertThat(outputStream.toString(), containsString("Cannot play video: Video does not exist"));
+    assertThat(outputStream.toString(), containsString("Stopping video: Amazing Cats"));
+    assertThat(outputStream.toString(), containsString("Playing video: Another Cat Video"));
   }
 
   @Test

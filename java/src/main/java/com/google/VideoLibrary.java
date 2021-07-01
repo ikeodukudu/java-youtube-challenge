@@ -15,6 +15,7 @@ import java.util.stream.Collectors;
 class VideoLibrary {
 
   private final HashMap<String, Video> videos;
+  //private final HashMap<String, VideoPlaylist> videoPlaylists;
 
   VideoLibrary() {
     this.videos = new HashMap<>();
@@ -52,4 +53,8 @@ class VideoLibrary {
   Video getVideo(String videoId) {
     return this.videos.get(videoId);
   }
+
+//  List<VideoPlaylist> getVideoPlaylist{
+//    return new ArrayList<>(this.videoPlaylist.values());
+//  }
 }

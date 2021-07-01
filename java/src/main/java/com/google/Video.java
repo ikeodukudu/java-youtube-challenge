@@ -9,6 +9,7 @@ class Video {
   private final String title;
   private final String videoId;
   private final List<String> tags;
+  private boolean isVideoPlaying;
 
   Video(String title, String videoId, List<String> tags) {
     this.title = title;
@@ -29,5 +30,13 @@ class Video {
   /** Returns a readonly collection of the tags of the video. */
   List<String> getTags() {
     return tags;
+  }
+
+  public boolean isVideoPlaying() {
+    return isVideoPlaying;
+  }
+
+  public void setVideoPlaying(boolean videoPlaying) {
+    isVideoPlaying = videoPlaying;
   }
 }
